@@ -39,7 +39,7 @@ Created instantly upon a successful vote. Because the PDA seed requires the vote
 
 * **PDA Seed Derivation:** `[b"voter_record", poll_id.to_le_bytes(), voter.key()]`
 
-## 🚀 Client Integration (TypeScript)
+##  Client Integration (TypeScript)
 
 To interact with the deployed Devnet contract via `@coral-xyz/anchor`:
 
