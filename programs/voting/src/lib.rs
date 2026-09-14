@@ -1,6 +1,6 @@
 use anchor_lang::prelude::*;
 
-declare_id!("AB3BP17KxYd2Ab8ec1fKg3UVmsdFo7JxZEmtjcCLJkF9");
+declare_id!("CBfua9WfUgaoWyjyyPs4xQbDNPpzUPdwpaGvR3x1yHGt");
 
 #[program]
 pub mod voting {
@@ -57,7 +57,7 @@ pub mod voting {
 pub struct Poll{
     pub optionA:u64,
     pub optionB:u64,
-    pub counter:poll_id,
+    pub counter:u64,
 }
 impl Poll{
     pub const LEN:usize=8+8+8+8;
@@ -73,10 +73,8 @@ impl VoterRecord{
     pub const LEN:usize=8+32+8+1;
 }
 
-
-#[instruction(poll_id:u64)]
-
 #[derive(Accounts)]
+#[instruction(poll_id:u64)]
 pub struct InitializePoll<'info>{
     #[account(init,
     payer=payer,
@@ -93,8 +91,9 @@ pub struct InitializePoll<'info>{
 }
 
 
-#[instruction(vote_option:u8)]
+
 #[derive(Accounts)]
+#[instruction(vote_option:u8)]
 pub struct CastVote<'info>{
     #[account(
    mut
